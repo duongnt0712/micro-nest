@@ -24,20 +24,16 @@ export class OrderButtonComponent implements OnInit, OnDestroy{
 
     ngOnInit() {
         this.count = this.getOrderItems().length;
-        window.addEventListener('order:add', this.handler as EventListener);
+        window.addEventListener('cart:add', this.handler as EventListener);
     }
 
 
     ngOnDestroy() {
-        window.removeEventListener('order:add', this.handler as EventListener);
+        window.removeEventListener('cart:add', this.handler as EventListener);
     }
 
     private getOrderItems(): any[] {
-        try {
-            return JSON.parse(localStorage.getItem(ORDER_KEY) || '[]');
-        } catch {
-            return [];
-        }
+        return JSON.parse(localStorage.getItem(ORDER_KEY) || '[]');
     }
 
     private setOrderItems(items: any[]): void {

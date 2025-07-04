@@ -84,6 +84,7 @@ export class BestSellingComponent {
     ];
 
     onAddToCart(product: any) {
+        console.log("best-seling")
         window.dispatchEvent(
             new CustomEvent('cart:add', { detail: product })
         );
